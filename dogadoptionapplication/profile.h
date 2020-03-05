@@ -2,6 +2,7 @@
 #define PROFILE_H
 
 #include <QString>
+#include <cmath>
 
 
 class profile
@@ -29,10 +30,10 @@ private:
     QString aboutParagraph;
     QString pictureName;
 
-    size_t activity;
-    size_t space;
-    size_t interaction;
-    size_t size;
+    int activity;
+    int space;
+    int interaction;
+    int size;
     bool kids;
     bool otherAnimals;
 };
