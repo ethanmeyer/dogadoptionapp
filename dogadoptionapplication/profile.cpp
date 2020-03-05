@@ -130,6 +130,11 @@ QString profile::getPicture()
     return pictureName;
 }
 
+size_t profile::getScore()
+{
+    return score;
+}
+
 profile::profile()
 {
 

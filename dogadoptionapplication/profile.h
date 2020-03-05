@@ -19,6 +19,7 @@ public:
     QString getBreed();
     QString getDescription();
     QString getPicture();
+    size_t getScore();
 
 private:
     profile();
