@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QFile>
+#include "profile.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -12,6 +14,8 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    std::vector<profile> dogs;
+
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
@@ -35,6 +39,8 @@ private slots:
     void on_startOverButton_clicked();
 
 private:
+    //bool CompareDogs(profile& a, profile& b);
+    void LoadDatabase();
     Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H
