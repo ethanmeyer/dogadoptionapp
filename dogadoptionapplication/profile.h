@@ -3,6 +3,7 @@
 
 #include <QString>
 #include <cmath>
+#include <QDebug>
 
 
 class profile
