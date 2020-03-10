@@ -6,6 +6,7 @@ profile::profile(QString pname, QString pbreed, QString pabout, QString ppicture
     breed = pbreed;
     aboutParagraph = pabout;
     pictureName = ppicture;
+
     activity = pactivity;
     space = pspace;
     interaction = pinteraction;
