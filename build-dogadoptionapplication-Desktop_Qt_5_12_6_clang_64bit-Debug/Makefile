@@ -725,6 +725,8 @@ moc_mainwindow.cpp: ../dogadoptionapplication/mainwindow.h \
 		../dogadoptionapplication/profile.h \
 		../../../Qt/5.12.6/clang_64/lib/QtCore.framework/Headers/QString \
 		../../../Qt/5.12.6/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../../Qt/5.12.6/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../Qt/5.12.6/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		moc_predefs.h \
 		../../../Qt/5.12.6/clang_64/bin/moc
 	/Users/ethanmeyer/Qt/5.12.6/clang_64/bin/moc $(DEFINES) --include /Users/ethanmeyer/Repositories/dogadoptionapp/build-dogadoptionapplication-Desktop_Qt_5_12_6_clang_64bit-Debug/moc_predefs.h -I/Users/ethanmeyer/Qt/5.12.6/clang_64/mkspecs/macx-clang -I/Users/ethanmeyer/Repositories/dogadoptionapp/dogadoptionapplication -I/Users/ethanmeyer/Qt/5.12.6/clang_64/lib/QtWidgets.framework/Headers -I/Users/ethanmeyer/Qt/5.12.6/clang_64/lib/QtGui.framework/Headers -I/Users/ethanmeyer/Qt/5.12.6/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include -F/Users/ethanmeyer/Qt/5.12.6/clang_64/lib ../dogadoptionapplication/mainwindow.h -o moc_mainwindow.cpp
@@ -760,6 +762,8 @@ main.o: ../dogadoptionapplication/main.cpp ../dogadoptionapplication/mainwindow.
 		../dogadoptionapplication/profile.h \
 		../../../Qt/5.12.6/clang_64/lib/QtCore.framework/Headers/QString \
 		../../../Qt/5.12.6/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../../Qt/5.12.6/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../Qt/5.12.6/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../../../Qt/5.12.6/clang_64/lib/QtWidgets.framework/Headers/QApplication \
 		../../../Qt/5.12.6/clang_64/lib/QtWidgets.framework/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../dogadoptionapplication/main.cpp
@@ -772,14 +776,18 @@ mainwindow.o: ../dogadoptionapplication/mainwindow.cpp ../dogadoptionapplication
 		../dogadoptionapplication/profile.h \
 		../../../Qt/5.12.6/clang_64/lib/QtCore.framework/Headers/QString \
 		../../../Qt/5.12.6/clang_64/lib/QtCore.framework/Headers/qstring.h \
-		ui_mainwindow.h \
 		../../../Qt/5.12.6/clang_64/lib/QtCore.framework/Headers/QDebug \
-		../../../Qt/5.12.6/clang_64/lib/QtCore.framework/Headers/qdebug.h
+		../../../Qt/5.12.6/clang_64/lib/QtCore.framework/Headers/qdebug.h \
+		ui_mainwindow.h \
+		../../../Qt/5.12.6/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
+		../../../Qt/5.12.6/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../dogadoptionapplication/mainwindow.cpp
 
 profile.o: ../dogadoptionapplication/profile.cpp ../dogadoptionapplication/profile.h \
 		../../../Qt/5.12.6/clang_64/lib/QtCore.framework/Headers/QString \
-		../../../Qt/5.12.6/clang_64/lib/QtCore.framework/Headers/qstring.h
+		../../../Qt/5.12.6/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../../Qt/5.12.6/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../Qt/5.12.6/clang_64/lib/QtCore.framework/Headers/qdebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o profile.o ../dogadoptionapplication/profile.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 

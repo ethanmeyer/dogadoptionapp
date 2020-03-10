@@ -39,6 +39,7 @@ private slots:
     void on_startOverButton_clicked();
 
 private:
+    //bool CompareDogs(profile& a, profile& b);
     void LoadDatabase();
     Ui::MainWindow *ui;
 };

@@ -7,23 +7,48 @@
 #include <vector>
 #include <QFileDialog>
 
+bool CompareDogs(profile &a, profile &b)
+{
+    if(a.profile::getScore() == b.profile::getScore()){
+        return a.profile::getName() > a.profile::getName();
+    }
+
+    return a.profile::getScore() > b.profile::getScore();
+}
+
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    //Load our dogs from a csv file
     LoadDatabase();
 
+    //List the dogs
     for(size_t i = 0; i < dogs.size(); i++){
         qDebug() << dogs[i].getName();
     }
 
+    //Make a profile to compare to. This is where we would have user input happen
     profile terry("Terry", "Human", "Terry is a human looking to adopt a dog", "terry.png", 0, 0, 0, 0, true, true);
+    qDebug() << "Terry Made";
+
+    //Compare the dogs to the user and compute their scores
     for(size_t i = 0; i < dogs.size(); i++){
-        terry.CompareProfiles(dogs[i]);
+        dogs[i].CompareProfiles(terry);
         qDebug() << dogs[i].getName() << " " << dogs[i].getScore();
     }
 
+    //Sort our list so we have the best fit dogs first
+    sort(dogs.begin(), dogs.end(), CompareDogs);
+    qDebug() << "Dogs sorted";
+
+    //List the dogs and scores
+    for(size_t i = 0; i < dogs.size(); i++){
+        qDebug() << dogs[i].getName() << " " << dogs[i].getScore();
+    }
 }
 
 MainWindow::~MainWindow()
