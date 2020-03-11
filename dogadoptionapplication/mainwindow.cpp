@@ -22,6 +22,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->stackedWidget->setCurrentIndex(0);
+    dogIndex = 0;
 }
 
 MainWindow::~MainWindow()
@@ -57,21 +59,8 @@ void MainWindow::on_page2NextButton_clicked()
     //Sort our list so we have the best fit dogs first
     sort(dogs.begin(), dogs.end(), CompareDogs);
     qDebug() << "Dogs sorted";
-}
 
-void MainWindow::on_page3BackButton_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(1);
-}
-
-void MainWindow::on_page3NextButton_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(3);
-}
-
-void MainWindow::on_page4BackButton_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(2);
+    ChangeCurrentDog();
 }
 
 void MainWindow::on_adoptButton_clicked()
@@ -154,4 +143,42 @@ void MainWindow::LoadDatabase()
         dogs.push_back(inputProfile);
     }
     qDebug() << "Dogs Loaded";
+}
+
+void MainWindow::ChangeCurrentDog()
+{
+    //Make sure the dog index is within the vector's range of values
+    dogIndex = dogIndex % dogs.size();
+
+    //Update the labels that show dog info
+    ui->compScoreLabel->setText(QString::number(dogs[dogIndex].getScore()));
+    ui->dogNameLabel->setText(dogs[dogIndex].getName());
+    //Need to finish these updates
+
+
+    //Update the dog's picture
+    SetPixmap();
+    ui->dogPictureLabel->setPixmap(dogPixmap);
+}
+
+void MainWindow::SetPixmap()
+{
+    QString filename = dogs[dogIndex].getPicture();
+    if(!dogPixmap.load(filename)){
+        qDebug() << "Picture loaded unsuccessfully";
+    }
+    qDebug() << "Succesfully loaded: " << filename;
+    dogPixmap = dogPixmap.scaled(ui->dogPictureLabel->size(), Qt::KeepAspectRatioByExpanding);
+}
+
+void MainWindow::on_adoptButton_2_clicked()
+{
+    dogIndex++;
+    ChangeCurrentDog();
+}
+
+void MainWindow::on_adoptButton_3_clicked()
+{
+    dogIndex--;
+    ChangeCurrentDog();
 }
