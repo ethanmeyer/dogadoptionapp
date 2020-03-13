@@ -150,15 +150,39 @@ void MainWindow::ChangeCurrentDog()
     //Make sure the dog index is within the vector's range of values
     dogIndex = dogIndex % dogs.size();
 
-    //Update the labels that show dog info
+    //Update simple labels that show dog info
     ui->compScoreLabel->setText(QString::number(dogs[dogIndex].getScore()));
     ui->dogNameLabel->setText(dogs[dogIndex].getName());
-    //Need to finish these updates
+
+    //Update age
 
 
-    //Update the dog's picture
+    //Update size
+    QString sizeLabel = "Size (weight): ";
+    int sizeNum = dogs[dogIndex].getSize();
+    switch(sizeNum){
+        case 0:
+            sizeLabel += "Small (under 45 lbs)";
+            break;
+        case 1:
+            sizeLabel += "Medium (between 45 and 80 lbs)";
+            break;
+        case 2:
+            sizeLabel += "Small (above 80 lbs)";
+            break;
+    }
+    ui->dogSizeLabel->setText(sizeLabel);
+
+    //Update breed
+    QString breedlabel = "Breed: " + dogs[dogIndex].getBreed();
+    ui->BreedLabel->setText(breedlabel);
+
+    //Update picture
     SetPixmap();
     ui->dogPictureLabel->setPixmap(dogPixmap);
+
+    //Update Personality
+    ui->dogPersonalityLabel->setText(dogs[dogIndex].getDescription());
 }
 
 void MainWindow::SetPixmap()
