@@ -34,7 +34,6 @@ MainWindow::~MainWindow()
 void MainWindow::on_homePageNextButton_clicked()
 {
     //Load our dogs from a csv file
-    LoadDatabase();
     ui->stackedWidget->setCurrentIndex(1);
 }
 
@@ -45,22 +44,24 @@ void MainWindow::on_page2BackButton_clicked()
 
 void MainWindow::on_page2NextButton_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(3);
-    //Make a profile to compare to. This is where we would have user input happen
-    profile terry("Terry", "Human", "Terry is a human looking to adopt a dog", "terry.png", 0, 0, 0, 0, true, true);
-    qDebug() << "Terry Made";
+    if(ValidInput()){
+        ui->stackedWidget->setCurrentIndex(3);
+        //Make a profile to compare to. This is where we would have user input happen
+        profile terry("Terry", "Human", "Terry is a human looking to adopt a dog", "terry.png", ActivityLevel(), YardSpace(), InteractionLevel(), DogSize(), HasKids(), HasAnimals());
+        qDebug() << "Terry Made. Everyone is Terry";
 
-    //Compare the dogs to the user and compute their scores
-    for(size_t i = 0; i < dogs.size(); i++){
-        dogs[i].CompareProfiles(terry);
-        qDebug() << dogs[i].getName() << " " << dogs[i].getScore();
+        //Compare the dogs to the user and compute their scores
+        for(size_t i = 0; i < dogs.size(); i++){
+            dogs[i].CompareProfiles(terry);
+            qDebug() << dogs[i].getName() << " " << dogs[i].getScore();
+        }
+
+        //Sort our list so we have the best fit dogs first
+        sort(dogs.begin(), dogs.end(), CompareDogs);
+        qDebug() << "Dogs sorted";
+
+        ChangeCurrentDog();
     }
-
-    //Sort our list so we have the best fit dogs first
-    sort(dogs.begin(), dogs.end(), CompareDogs);
-    qDebug() << "Dogs sorted";
-
-    ChangeCurrentDog();
 }
 
 void MainWindow::on_adoptButton_clicked()
@@ -85,6 +86,8 @@ void MainWindow::LoadDatabase()
     QString filePath = QFileDialog::getOpenFileName(this,
                     tr("Open Dog Database"), "",
                     tr("Address Book (*.csv);;All Files (*)"));
+    qDebug() << filePath;
+    //QString filePath = ":/dogDatabase.csv";
 
     //Open the CSV file
     QFile file(filePath);
@@ -150,8 +153,11 @@ void MainWindow::ChangeCurrentDog()
     //Make sure the dog index is within the vector's range of values
     dogIndex = dogIndex % dogs.size();
 
-    //Update simple labels that show dog info
-    ui->compScoreLabel->setText(QString::number(dogs[dogIndex].getScore()));
+    //Update score label
+    QString scoreLabel = QString::number(dogs[dogIndex].getScore()) + "/13";
+    ui->compScoreLabel->setText(scoreLabel);
+
+    //Update name label
     ui->dogNameLabel->setText(dogs[dogIndex].getName());
 
     //Update age
@@ -195,6 +201,75 @@ void MainWindow::SetPixmap()
     dogPixmap = dogPixmap.scaled(ui->dogPictureLabel->size(), Qt::KeepAspectRatioByExpanding);
 }
 
+bool MainWindow::HasKids()
+{
+    if(ui->yesKidsRadioButton->isChecked()){
+       return true;
+    }
+    return false;
+}
+
+bool MainWindow::HasAnimals()
+{
+    if(ui->yesPetsRadioButton->isChecked()){
+        return true;
+    }
+    return false;
+}
+
+int MainWindow::YardSpace()
+{
+    if(ui->noBackyardRadioButton->isChecked()){
+        return 0;
+    }
+    if(ui->smallBackyardRadioButton->isChecked()){
+        return 1;
+    }
+    if(ui->mediumBackyardRadioButton->isChecked()){
+        return 2;
+    }
+    return 3;
+}
+
+int MainWindow::ActivityLevel()
+{
+    if(ui->noWalksradioButton->isChecked()){
+        return 0;
+    }
+    if(ui->oneToTwoWalksRadioButton->isChecked()){
+        return 1;
+    }
+    if(ui->threeToFiveWalksRadioButton->isChecked()){
+        return 2;
+    }
+    return 3;
+}
+
+int MainWindow::InteractionLevel()
+{
+    if(ui->neverHomeRadioButton->isChecked()){
+        return 0;
+    }
+    if(ui->zeroToSixHoursADayRadioButton->isChecked()){
+        return 1;
+    }
+    if(ui->sixToTwelveHoursADayRadioButton->isChecked()){
+        return 2;
+    }
+    return 3;
+}
+
+int MainWindow::DogSize()
+{
+    if(ui->SmallDogRadioButton->isChecked()){
+        return 0;
+    }
+    if(ui->MediumDogRadioButton->isChecked()){
+        return 1;
+    }
+    return 2;
+}
+
 void MainWindow::on_adoptButton_2_clicked()
 {
     dogIndex++;
@@ -205,4 +280,22 @@ void MainWindow::on_adoptButton_3_clicked()
 {
     dogIndex--;
     ChangeCurrentDog();
+}
+
+bool MainWindow::ValidInput()
+{
+    if((ui->noBackyardRadioButton->isChecked() || ui->smallBackyardRadioButton->isChecked() || ui->mediumBackyardRadioButton->isChecked() || ui->largeBackyardRadioButton->isChecked())
+            && (ui->noWalksradioButton->isChecked() || ui->oneToTwoWalksRadioButton->isChecked() || ui->sixToSevenWalksRadioButton || ui->threeToFiveWalksRadioButton->isChecked())
+            && (ui->neverHomeRadioButton->isChecked() || ui->zeroToSixHoursADayRadioButton->isChecked() || ui->sixToTwelveHoursADayRadioButton->isChecked() || ui->homeAllDayRadioButton->isChecked())
+            && (ui->noKidsRadioButton->isChecked() || ui->yesKidsRadioButton->isChecked())
+            && (ui->noPetsRadioButton->isChecked() || ui->yesPetsRadioButton->isChecked())
+            && (ui->SmallDogRadioButton->isChecked() || ui->MediumDogRadioButton->isChecked() || ui->largeDogRadioButton->isChecked())){
+        return true;
+    }
+    return false;
+}
+
+void MainWindow::on_actionLoad_Dog_Database_triggered()
+{
+    LoadDatabase();
 }

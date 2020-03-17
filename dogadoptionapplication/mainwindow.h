@@ -36,12 +36,21 @@ private slots:
 
     void on_adoptButton_3_clicked();
 
+    void on_actionLoad_Dog_Database_triggered();
+
 private:
-    //bool CompareDogs(profile& a, profile& b);
+    bool ValidInput();
     void LoadDatabase();
     void ChangeCurrentDog();
     void SetPixmap();
     int dogIndex;
+
+    bool HasKids();
+    bool HasAnimals();
+    int YardSpace();
+    int ActivityLevel();
+    int InteractionLevel();
+    int DogSize();
     QPixmap dogPixmap;
     Ui::MainWindow *ui;
 };
