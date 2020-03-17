@@ -136,6 +136,11 @@ size_t profile::getScore()
     return score;
 }
 
+int profile::getSize()
+{
+    return size;
+}
+
 profile::profile()
 {
 
