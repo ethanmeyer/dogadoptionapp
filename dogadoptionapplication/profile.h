@@ -21,6 +21,7 @@ public:
     QString getDescription();
     QString getPicture();
     size_t getScore();
+    int getSize();
 
 private:
     profile();
