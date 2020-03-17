@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/">
+        <file>dogpictures/Airbud.jpg</file>
+        <file>dogpictures/Balto.jpg</file>
+        <file>dogpictures/Buck.jpg</file>
+        <file>dogpictures/Buster.jpg</file>
+        <file>dogpictures/Cujo.jpg</file>
+        <file>dogpictures/Dug.jpg</file>
+        <file>dogpictures/Georgette.jpg</file>
+        <file>dogpictures/Lady.jpg</file>
+        <file>dogpictures/Lassie.jpg</file>
+        <file>dogpictures/Marley.jpg</file>
+        <file>dogpictures/Pongo.jpg</file>
+        <file>dogpictures/Snoopy.jpg</file>
+        <file>dogpictures/Stitch.jpg</file>
+        <file>dogpictures/Tramp.jpg</file>
+        <file>dogpictures/Tucker.jpg</file>
+        <file>dogpictures/Winn-Dixie.jpg</file>
+    </qresource>
+</RCC>
