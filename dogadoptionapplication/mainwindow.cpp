@@ -195,7 +195,7 @@ void MainWindow::SetPixmap()
 {
     QString filename = dogs[dogIndex].getPicture();
     if(!dogPixmap.load(filename)){
-        qDebug() << "Picture loaded unsuccessfully";
+        qDebug() << "Picture loaded unsuccessfully -> " << dogs[dogIndex].getPicture();
     }
     qDebug() << "Succesfully loaded: " << filename;
     dogPixmap = dogPixmap.scaled(ui->dogPictureLabel->size(), Qt::KeepAspectRatioByExpanding);
