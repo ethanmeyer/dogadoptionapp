@@ -167,7 +167,12 @@ void MainWindow::ChangeCurrentDog()
     ui->dogNameLabel->setText(dogs[dogIndex].getName());
 
     //Update age
+    QString ageLabel = "Age: " + QString::number(dogs[dogIndex].getAge());
+    ui->dogAgeLabel->setText(ageLabel);
 
+    //Update sex
+    QString sexLabel = "Sex: " + dogs[dogIndex].getSex();
+    ui->dogSexLabel->setText(sexLabel);
 
     //Update size
     QString sizeLabel = "Size (weight): ";
