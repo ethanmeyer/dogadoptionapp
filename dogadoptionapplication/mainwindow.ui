@@ -28,7 +28,7 @@
 background-color: rgb(247, 247, 247);</string>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="homePage">
      <widget class="QLabel" name="welcomeLabel">
@@ -699,7 +699,7 @@ font: 75 18pt &quot;Verdana&quot;;</string>
        <rect>
         <x>600</x>
         <y>270</y>
-        <width>121</width>
+        <width>231</width>
         <height>41</height>
        </rect>
       </property>
@@ -715,7 +715,7 @@ font: 75 18pt &quot;Verdana&quot;;</string>
        <rect>
         <x>600</x>
         <y>320</y>
-        <width>121</width>
+        <width>231</width>
         <height>41</height>
        </rect>
       </property>
