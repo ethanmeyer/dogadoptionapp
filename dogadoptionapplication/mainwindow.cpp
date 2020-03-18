@@ -6,6 +6,7 @@
 #include <iostream>
 #include <vector>
 #include <QFileDialog>
+#include <QMessageBox>
 
 //Compare function for sorting the dog database
 bool CompareDogs(profile &a, profile &b)
@@ -24,6 +25,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     ui->stackedWidget->setCurrentIndex(0);
     dogIndex = 0;
+    dogsLoaded = false;
 }
 
 MainWindow::~MainWindow()
@@ -47,7 +49,7 @@ void MainWindow::on_page2NextButton_clicked()
     if(ValidInput()){
         ui->stackedWidget->setCurrentIndex(3);
         //Make a profile to compare to. This is where we would have user input happen
-        profile terry("Terry", "Human", "Terry is a human looking to adopt a dog", "terry.png", ActivityLevel(), YardSpace(), InteractionLevel(), DogSize(), HasKids(), HasAnimals());
+        profile terry("Terry", "Human", "Terry is a human looking to adopt a dog", "terry.png", ActivityLevel(), YardSpace(), InteractionLevel(), DogSize(), HasKids(), HasAnimals(), "da boy", 10);
         qDebug() << "Terry Made. Everyone is Terry";
 
         //Compare the dogs to the user and compute their scores
@@ -66,6 +68,7 @@ void MainWindow::on_page2NextButton_clicked()
 
 void MainWindow::on_adoptButton_clicked()
 {
+    UpdateFinalPage();
     ui->stackedWidget->setCurrentIndex(4);
 }
 
@@ -101,8 +104,8 @@ void MainWindow::LoadDatabase()
 
     //Prepare variables and our database vector for adding in new dog profiles
     dogs.clear();
-    QString name, breed, about, picture;
-    int activity, space, interaction, size, kids, animals;
+    QString name, breed, about, picture, sex;
+    int activity, space, interaction, size, kids, animals, age;
     bool kidsBool, animalsBool;
 
     //Parse the text file and make a profile class for the dog to add to our database vector
@@ -128,6 +131,8 @@ void MainWindow::LoadDatabase()
         size = fields[7].toInt();
         kids = fields[8].toInt();
         animals = fields[9].toInt();
+        age = fields[10].toInt();
+        sex = fields[11];
 
         //Get the boolean values from the input fields
         if(kids == 1){
@@ -142,10 +147,11 @@ void MainWindow::LoadDatabase()
         }
 
         //Create our profile and add it to the database vector
-        profile inputProfile(name, breed, about, picture, activity, space, interaction, size, kidsBool, animalsBool);
+        profile inputProfile(name, breed, about, picture, activity, space, interaction, size, kidsBool, animalsBool, sex, age);
         dogs.push_back(inputProfile);
     }
     qDebug() << "Dogs Loaded";
+    dogsLoaded = true;
 }
 
 void MainWindow::ChangeCurrentDog()
@@ -161,7 +167,12 @@ void MainWindow::ChangeCurrentDog()
     ui->dogNameLabel->setText(dogs[dogIndex].getName());
 
     //Update age
+    QString ageLabel = "Age: " + QString::number(dogs[dogIndex].getAge());
+    ui->dogAgeLabel->setText(ageLabel);
 
+    //Update sex
+    QString sexLabel = "Sex: " + dogs[dogIndex].getSex();
+    ui->dogSexLabel->setText(sexLabel);
 
     //Update size
     QString sizeLabel = "Size (weight): ";
@@ -199,6 +210,13 @@ void MainWindow::SetPixmap()
     }
     qDebug() << "Succesfully loaded: " << filename;
     dogPixmap = dogPixmap.scaled(ui->dogPictureLabel->size(), Qt::KeepAspectRatioByExpanding);
+}
+
+void MainWindow::UpdateFinalPage()
+{
+    ui->endPageDogNameLabel->setText(dogs[dogIndex].getName());
+    ui->endPageDogPictureLabel->setPixmap(dogPixmap);
+    ui->endPageDogPersonalityLabel->setText(dogs[dogIndex].getDescription());
 }
 
 bool MainWindow::HasKids()
@@ -289,9 +307,19 @@ bool MainWindow::ValidInput()
             && (ui->neverHomeRadioButton->isChecked() || ui->zeroToSixHoursADayRadioButton->isChecked() || ui->sixToTwelveHoursADayRadioButton->isChecked() || ui->homeAllDayRadioButton->isChecked())
             && (ui->noKidsRadioButton->isChecked() || ui->yesKidsRadioButton->isChecked())
             && (ui->noPetsRadioButton->isChecked() || ui->yesPetsRadioButton->isChecked())
-            && (ui->SmallDogRadioButton->isChecked() || ui->MediumDogRadioButton->isChecked() || ui->largeDogRadioButton->isChecked())){
+            && (ui->SmallDogRadioButton->isChecked() || ui->MediumDogRadioButton->isChecked() || ui->largeDogRadioButton->isChecked())
+            && dogsLoaded){
         return true;
     }
+
+    QMessageBox popup;
+    popup.setWindowTitle("Error");
+    if(!dogsLoaded){
+        popup.setText("Please Load in the Dog Database");
+    }else{
+        popup.setText("Please select an answer for every question");
+    }
+    popup.exec();
     return false;
 }
 
