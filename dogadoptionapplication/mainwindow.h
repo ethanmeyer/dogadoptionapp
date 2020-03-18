@@ -43,6 +43,9 @@ private:
     void LoadDatabase();
     void ChangeCurrentDog();
     void SetPixmap();
+    void UpdateFinalPage();
+
+    bool dogsLoaded;
     int dogIndex;
 
     bool HasKids();

@@ -1,11 +1,12 @@
 #include "profile.h"
 
-profile::profile(QString pname, QString pbreed, QString pabout, QString ppicture, size_t pactivity, size_t pspace, size_t pinteraction, size_t psize, bool pkids, bool panimals)
+profile::profile(QString pname, QString pbreed, QString pabout, QString ppicture, size_t pactivity, size_t pspace, size_t pinteraction, size_t psize, bool pkids, bool panimals, QString psex, size_t page)
 {
     name = pname;
     breed = pbreed;
     aboutParagraph = pabout;
     pictureName = ppicture;
+    sex = psex;
 
     activity = pactivity;
     space = pspace;
@@ -13,21 +14,7 @@ profile::profile(QString pname, QString pbreed, QString pabout, QString ppicture
     size = psize;
     kids = pkids;
     otherAnimals = panimals;
-}
-
-profile::profile(QString pname, QString pbreed, QString pabout, QString ppicture, size_t pactivity, size_t pspace, size_t pinteraction, size_t psize, bool pkids, bool panimals, size_t pscore)
-{
-    name = pname;
-    breed = pbreed;
-    aboutParagraph = pabout;
-    pictureName = ppicture;
-    activity = pactivity;
-    space = pspace;
-    interaction = pinteraction;
-    size = psize;
-    kids = pkids;
-    otherAnimals = panimals;
-    score = pscore;
+    age = page;
 }
 
 profile::~profile()
@@ -131,6 +118,11 @@ QString profile::getPicture()
     return pictureName;
 }
 
+QString profile::getSex()
+{
+    return sex;
+}
+
 size_t profile::getScore()
 {
     return score;
@@ -139,6 +131,11 @@ size_t profile::getScore()
 int profile::getSize()
 {
     return size;
+}
+
+int profile::getAge()
+{
+    return age;
 }
 
 profile::profile()
