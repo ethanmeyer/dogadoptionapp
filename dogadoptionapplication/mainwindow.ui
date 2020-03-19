@@ -34,27 +34,28 @@ background-color: rgb(247, 247, 247);</string>
      <widget class="QLabel" name="welcomeLabel">
       <property name="geometry">
        <rect>
-        <x>240</x>
-        <y>70</y>
-        <width>651</width>
-        <height>141</height>
+        <x>0</x>
+        <y>0</y>
+        <width>1131</width>
+        <height>81</height>
        </rect>
       </property>
       <property name="font">
        <font>
         <family>Verdana</family>
-        <pointsize>24</pointsize>
+        <pointsize>18</pointsize>
         <weight>9</weight>
         <italic>false</italic>
         <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(247, 247, 247);
-font: 75 24pt &quot;Verdana&quot;;</string>
+       <string notr="true">background-color: rgb(12, 88, 67);
+font: 75 18pt &quot;Verdana&quot;;
+color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
-       <string>Welcome to Adopt a Dog App</string>
+       <string>Welcome to GoodBoi.com</string>
       </property>
       <property name="wordWrap">
        <bool>true</bool>
@@ -63,10 +64,10 @@ font: 75 24pt &quot;Verdana&quot;;</string>
      <widget class="QPushButton" name="homePageNextButton">
       <property name="geometry">
        <rect>
-        <x>270</x>
-        <y>450</y>
-        <width>561</width>
-        <height>171</height>
+        <x>390</x>
+        <y>560</y>
+        <width>341</width>
+        <height>81</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -75,7 +76,27 @@ font: 12pt &quot;Verdana&quot;;
 color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
-       <string>Take the compadabilty quiz to find your new Dog!</string>
+       <string>Let's Get Started!</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>100</y>
+        <width>741</width>
+        <height>441</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(247, 247, 247);
+font: 75 18pt &quot;Verdana&quot;;</string>
+      </property>
+      <property name="text">
+       <string>So often we find that many aspiring dog owners, while enthusiastic, are not aware of the proper ways to care for a dog. Even more commonly seen is that these animals' needs and personalities sometimes are not a good fit for the lives of the owners. Our mission is to not only ensure that our dogs will be placed in loving and safe homes, but that there would be a well-established bond between these animals and their owners. Through our compatibility quiz, we hope to find the best match possible for everyone!</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>
@@ -612,16 +633,16 @@ color: rgb(255, 255, 255);</string>
         <x>0</x>
         <y>0</y>
         <width>1141</width>
-        <height>61</height>
+        <height>71</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(12, 88, 67);
-font: 75 16pt &quot;Verdana&quot;;
+font: 75 18pt &quot;Verdana&quot;;
 color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
-       <string>Life Style and Preference Questions </string>
+       <string>Life Style and Personality Matching</string>
       </property>
      </widget>
      <widget class="QPushButton" name="page2BackButton">
@@ -860,12 +881,12 @@ font: 10pt &quot;Verdana&quot;;</string>
         <x>0</x>
         <y>0</y>
         <width>1141</width>
-        <height>61</height>
+        <height>71</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(12, 88, 67);
-font: 75 16pt &quot;Verdana&quot;;
+font: 75 18pt &quot;Verdana&quot;;
 color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
@@ -919,12 +940,12 @@ color: rgb(255, 255, 255);</string>
         <x>0</x>
         <y>0</y>
         <width>1141</width>
-        <height>61</height>
+        <height>71</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(12, 88, 67);
-font: 75 16pt &quot;Verdana&quot;;
+font: 75 18pt &quot;Verdana&quot;;
 color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
