@@ -35,7 +35,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_homePageNextButton_clicked()
 {
-    //Load our dogs from a csv file
     ui->stackedWidget->setCurrentIndex(1);
 }
 
