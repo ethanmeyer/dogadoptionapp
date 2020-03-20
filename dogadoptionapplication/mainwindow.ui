@@ -28,7 +28,7 @@
 background-color: rgb(247, 247, 247);</string>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="homePage">
      <widget class="QLabel" name="welcomeLabel">
@@ -216,7 +216,7 @@ font: 75 18pt &quot;Verdana&quot;;</string>
        </font>
       </property>
       <property name="text">
-       <string>Q2. How active will you be with your dog?</string>
+       <string>Q2. How active will you be with your dog every week?</string>
       </property>
       <property name="wordWrap">
        <bool>true</bool>
