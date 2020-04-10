@@ -28,7 +28,7 @@
 background-color: rgb(247, 247, 247);</string>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="homePage">
      <widget class="QLabel" name="welcomeLabel">
@@ -216,7 +216,7 @@ font: 75 18pt &quot;Verdana&quot;;</string>
        </font>
       </property>
       <property name="text">
-       <string>Q2. How active will you be with your dog?</string>
+       <string>Q2. How active will you be with your dog every week?</string>
       </property>
       <property name="wordWrap">
        <bool>true</bool>
@@ -704,7 +704,7 @@ font: 75 18pt &quot;Verdana&quot;;</string>
        <rect>
         <x>600</x>
         <y>220</y>
-        <width>221</width>
+        <width>381</width>
         <height>41</height>
        </rect>
       </property>
@@ -720,7 +720,7 @@ font: 75 18pt &quot;Verdana&quot;;</string>
        <rect>
         <x>600</x>
         <y>270</y>
-        <width>231</width>
+        <width>301</width>
         <height>41</height>
        </rect>
       </property>
@@ -736,7 +736,7 @@ font: 75 18pt &quot;Verdana&quot;;</string>
        <rect>
         <x>600</x>
         <y>320</y>
-        <width>231</width>
+        <width>411</width>
         <height>41</height>
        </rect>
       </property>
@@ -752,7 +752,7 @@ font: 75 18pt &quot;Verdana&quot;;</string>
        <rect>
         <x>600</x>
         <y>170</y>
-        <width>121</width>
+        <width>231</width>
         <height>41</height>
        </rect>
       </property>
@@ -770,7 +770,7 @@ font: 14pt &quot;Verdana&quot;;</string>
         <x>600</x>
         <y>370</y>
         <width>421</width>
-        <height>101</height>
+        <height>121</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -779,6 +779,12 @@ font: 14pt &quot;Verdana&quot;;</string>
       </property>
       <property name="text">
        <string>Personality</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QLabel" name="scoreLabel">

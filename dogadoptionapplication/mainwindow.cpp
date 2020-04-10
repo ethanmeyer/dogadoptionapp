@@ -35,7 +35,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_homePageNextButton_clicked()
 {
-    //Load our dogs from a csv file
     ui->stackedWidget->setCurrentIndex(1);
 }
 
@@ -185,7 +184,7 @@ void MainWindow::ChangeCurrentDog()
             sizeLabel += "Medium (between 45 and 80 lbs)";
             break;
         case 2:
-            sizeLabel += "Small (above 80 lbs)";
+            sizeLabel += "Large (above 80 lbs)";
             break;
     }
     ui->dogSizeLabel->setText(sizeLabel);
